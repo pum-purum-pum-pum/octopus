@@ -4,7 +4,6 @@ import argparse
 import json
 import os
 
-
 epilog = \
     "EXAMPLE of usage:\n" +\
     "python bookmakers.py --id1 9 --id2 27"
@@ -27,5 +26,5 @@ if __name__ == "__main__":
         print(json.dumps
                ({'type': 'piechart',
                  'data': [koef[0], koef[1]],
-                 'legend': 'Средние коэфиценты букмекоров'
+                 'legend': {'title': 'Средние коэфиценты букмекоров'}
                }))
