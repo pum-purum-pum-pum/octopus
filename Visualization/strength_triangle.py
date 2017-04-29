@@ -18,7 +18,7 @@ args = parser.parse_args()
 
 def solo_name(name):
     return not '/' in name
-players_data = pd.read_csv('../data/players_atp.csv')
+players_data = pd.read_csv(os.path.dirname(os.path.realpath(__file__)) + '/../data/players_atp.csv')
 select_names = np.array([solo_name(i) for i in players_data['NAME_P']])
 players_data = players_data[select_names]
 
