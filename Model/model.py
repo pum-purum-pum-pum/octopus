@@ -3,10 +3,12 @@ import numpy as np
 import datetime as dt
 from collections import defaultdict, OrderedDict
 import xgboost as xgb
+import  os
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import log_loss, accuracy_score
 import pickle
+script_path = os.path.dirname(os.path.realpath(__file__))
 
 class Dataset:
     def __init__(self, games, players, odds, ratings):
@@ -90,7 +92,7 @@ def read_ratings_table(filename, enc):
     
     return ratings_data
 
-def load_dataset(dataset_path='../data/dataset/', clear_two_names=True, enc=None):
+def load_dataset(dataset_path=script_path + '/../data/dataset/', clear_two_names=True, enc=None):
     players = read_players_table(dataset_path + 'players_atp.csv', enc, clear_two_names)
     games = read_games_table(dataset_path + 'games_atp.csv', enc)
     odds = read_odds_table(dataset_path + 'odds_atp.csv', games, enc)
@@ -549,10 +551,10 @@ def generate_features(dataset):
 
 
 def predict(p1, p2):
-    model = load_model('../data/model')
+    model = load_model(script_path + '/../data/model')
     
-    player_features = pd.read_csv('../data/players.csv', index_col=0)
-    pair_features = pd.read_csv('../data/pairs.csv', index_col=0)
+    player_features = pd.read_csv(script_path + '/../data/players.csv', index_col=0)
+    pair_features = pd.read_csv(script_path + '/../data/pairs.csv', index_col=0)
     
     if p1 in player_features.index:
         player1_features = player_features[player_features.index == p1].values[0]
