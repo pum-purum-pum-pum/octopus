@@ -39,4 +39,4 @@ if __name__ == "__main__":
     pair_features = pd.read_csv(os.path.dirname(od.path.realpath(__file__)) +'/../data/pairs.csv')
     games = pd.read_csv(os.path.dirname(os.path.realpath(__file__)) +'/../data/games_atp.csv')
     
-    print(json.dumbs(players_pair_stats(args.id1, args.id2)
+    print(json.dumbs(players_pair_stats(args.id1, args.id2)))
