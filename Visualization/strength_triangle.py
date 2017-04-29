@@ -17,9 +17,9 @@ args = parser.parse_args()
 
 
 def strength_triangle(id_1, id_2, tournament=None, other = None):
-    p_data = pd.read_csv('../data/players_atp.csv')
+    p_data = pd.read_csv(os.path.dirname(os.path.realpath(__file__)) + '/../data/players_atp.csv')
     p_data = p_data.dropna(subset = ['RANK_P', 'POINT_P', 'PRIZE_P'])
-    visualization_type = 3
+    visualization_type = 'forcechart'
     rank_norm = np.max(p_data['RANK_P'].values)
     point_norm = np.max(p_data['POINT_P'].values)
     prize_norm = np.max(p_data['PRIZE_P'].values)
