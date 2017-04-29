@@ -21,7 +21,11 @@ if __name__ == "__main__":
     koef = data_book_makers.loc[(data_book_makers['ID1_O'] == args.id1)\
                          & (data_book_makers['ID2_O'] == args.id2)][['K1', 'K2']].mean(axis=0)
     if np.isnan(koef[0]) or np.isnan(koef[1]):
-        print (json.dumps([0.5, 0.5]))
+        print (json.dumps
+               ({'type': 'piechart',
+                 'data': [0.5, 0.5],
+                 'legend': {'title': 'Средние коэфиценты букмекоров'}
+               }))
     else:
         print(json.dumps
                ({'type': 'piechart',
