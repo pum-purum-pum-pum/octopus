@@ -24,11 +24,11 @@ if __name__ == "__main__":
         print (json.dumps
                ({'type': 'piechart',
                  'data': [0.5, 0.5],
-                 'legend': {'title': 'Средние коэфиценты букмекоров'}
+                 'legend': {'title': 'Average odds of bookmakers'}
                }))
     else:
         print(json.dumps
                ({'type': 'piechart',
                  'data': [koef[0], koef[1]],
-                 'legend': {'title': 'Средние коэфиценты букмекоров'}
+                 'legend': {'title': 'Average odds of bookmakers'}
                }))
