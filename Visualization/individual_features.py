@@ -30,9 +30,9 @@ def get_win_rate(pid1, pid2, games_data, players_data):
 
 
 if __name__ == "__main__":
-    games_data = pd.read_csv('../data/games_atp.csv')
-    players_data = pd.read_csv('../data/players_atp.csv')
-    tours_data = pd.read_csv('../data/tours_atp.csv')
+    games_data = pd.read_csv(os.path.dirname(os.path.realpath(__file__)) + '/../data/games_atp.csv')
+    players_data = pd.read_csv(os.path.dirname(os.path.realpath(__file__)) + '/../data/players_atp.csv')
+    tours_data = pd.read_csv(os.path.dirname(os.path.realpath(__file__)) + '/../data/tours_atp.csv')
     games_data = pd.merge(tours_data, games_data, left_on='ID_T', right_on='ID_T_G')
     id_to_name = {1: "Hard", 2: "Clay", 3: "I.hard", 4: "Carpet", 5: "Grass", 6: "Acrylic"}
     court_type = []
