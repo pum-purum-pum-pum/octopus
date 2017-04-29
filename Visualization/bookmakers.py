@@ -12,6 +12,8 @@ epilog = \
 parser = argparse.ArgumentParser(description='input output files', epilog=epilog)
 parser.add_argument('--id1', type=int, help="player1 id")
 parser.add_argument('--id2', type=int, help="player2 id")
+parser.add_argument('--tour', type=int, default=-1)
+parser.add_argument('--features', type=str, default='')
 args = parser.parse_args()
 
 
@@ -22,4 +24,8 @@ if __name__ == "__main__":
     if np.isnan(koef[0]) or np.isnan(koef[1]):
         print (json.dumps([0.5, 0.5]))
     else:
-        print (json.dumps([koef[0], koef[1]]))
+        print(json.dumps
+               ({'type': 'piechart',
+                 'data': [koef[0], koef[1]],
+                 'legend': 'Средние коэфиценты букмекоров'
+               }))
