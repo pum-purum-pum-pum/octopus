@@ -17,12 +17,12 @@ args = parser.parse_args()
 
 def players_pair_stats(id1, id2, id_t=None, features_dict=None):
     
-    ind_features = pd.read_csv("../data/players.csv")
+    ind_features = pd.read_csv("../data/players.csv", index_col=0)
     pair_features = pd.read_csv("../data/pairs.csv")
     games = pd.read_csv("../data/games_atp.csv")
     
-    features1 = ind_features[(ind_features["ID"] == id1)]
-    features2 = ind_features[(ind_features["ID"] == id2)]
+    features1 = ind_features[(ind_features.index() == id1)]
+    features2 = ind_features[(ind_features.index() == id2)]
     games_history = games[(games["ID1_G"] == id1) & (games["ID2_G"] == id2)]
     
     legend_data1 = {"Title": "Individual features", "Player1": "Player 1", "Player2": "Player 2"}
