@@ -18,5 +18,4 @@ def get_bookmakers():
     cursor.execute("SELECT * FROM sqlite_master")
     player1 = request.args.get('player1')
     player2 = request.args.get('player2')
-    print(player1, player2)
     return get_bookmakers_coef(cursor, player1, player2)

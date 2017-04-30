@@ -50,7 +50,6 @@ def strength_triangle(id_1, id_2, tournament=None, other = None):
     # prize_p1_norm = prize_p1/prize_norm
     # prize_p2_norm = prize_p2/prize_norm
     wr_p1, wr_p2 =  get_win_rate(id_1, id_2)
-    print(rank_p1, rank_p2)
     visualization_data = [[1 - np.log(rank_p1) / np.log(rank_norm), point_p1_norm,
                            (1 + np.log(prize_p1)) / (1 + np.log(prize_norm)), wr_p1],
                           [1 - np.log(rank_p2) / np.log(rank_norm), point_p2_norm,
