@@ -21,11 +21,13 @@ def get_bookmakers_coef(cursor, player1, player2):
         if line[5] is not None and line[6] is not None:
             k1.append(float(line[5]))
             k2.append(float(line[6]))
-    coef = (np.mean(k1), np.mean(k2))
+    coef = (float(np.mean(k1)), float(np.mean(k2)))
     if reversed:
         coef = coef[::-1]
+    print('-------------')
+    print(coef[0], coef[1])
     if np.isnan(coef[0]) or np.isnan(coef[1]):
-        print (json.dumps
+        return (json.dumps
                ({'type': 'piechart',
                  'data': [0.5, 0.5],
                  'legend': {'title': 'Average odds of bookmakers'}

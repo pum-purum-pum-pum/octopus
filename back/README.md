@@ -1,6 +1,6 @@
 # GET запросы:
 Средние ставки букмекеров:<br>
-bookmakers?player9=1&player2=27
+bookmakers?player1=9&player2=27
 # Запуск сервера
 $ export FLASK_APP=serv.py
 $ python -m flask run <br>
