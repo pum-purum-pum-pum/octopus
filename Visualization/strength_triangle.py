@@ -43,15 +43,18 @@ def strength_triangle(id_1, id_2, tournament=None, other = None):
     point_p2 = p_data[p_data['ID_P'] == id_2]['POINT_P'].values[0]
     prize_p1 = p_data[p_data['ID_P'] == id_1]['PRIZE_P'].values[0]
     prize_p2 = p_data[p_data['ID_P'] == id_2]['PRIZE_P'].values[0]
-    rank_p1_norm = (rank_norm - rank_p1)/rank_norm
-    rank_p2_norm = (rank_norm - rank_p2)/rank_norm
+    # rank_p1_norm = (rank_norm - rank_p1)/rank_norm
+    # rank_p2_norm = (rank_norm - rank_p2)/rank_norm
     point_p1_norm = point_p1/point_norm
     point_p2_norm = point_p2/point_norm
-    prize_p1_norm = prize_p1/prize_norm
-    prize_p2_norm = prize_p2/prize_norm
+    # prize_p1_norm = prize_p1/prize_norm
+    # prize_p2_norm = prize_p2/prize_norm
     wr_p1, wr_p2 =  get_win_rate(id_1, id_2)
-    visualization_data = [[rank_p1_norm, point_p1_norm, prize_p1_norm, wr_p1],
-                          [rank_p2_norm, point_p2_norm, prize_p2_norm, wr_p2]]
+    print(rank_p1, rank_p2)
+    visualization_data = [[1 - np.log(rank_p1) / np.log(rank_norm), point_p1_norm,
+                           (1 + np.log(prize_p1)) / (1 + np.log(prize_norm)), wr_p1],
+                          [1 - np.log(rank_p2) / np.log(rank_norm), point_p2_norm,
+                           (1 + np.log(prize_p2)) / (1 + np.log(prize_norm)), wr_p2]]
     visualization_legend = {'axis': ['Rank', 'Points', 'Prize', 'Win Rate'], 'title': 'Strength polygon'}
     r = dict(type = visualization_type, data = visualization_data, legend = visualization_legend)
     return r

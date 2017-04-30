@@ -24,8 +24,6 @@ def get_bookmakers_coef(cursor, player1, player2):
     coef = (float(np.mean(k1)), float(np.mean(k2)))
     if reversed:
         coef = coef[::-1]
-    print('-------------')
-    print(coef[0], coef[1])
     if np.isnan(coef[0]) or np.isnan(coef[1]):
         return (json.dumps
                ({'type': 'piechart',
