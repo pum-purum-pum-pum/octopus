@@ -10,20 +10,24 @@ def get_bookmakers_coef(cursor, player1, player2):
     query = query.format(id1_=player1, id2_=player2)
     data = cursor.execute(query).fetchall()
     reversed = False
-    if len(data) == 0:
-        query = 'select * from odds_atp where ID1_O={id1_} AND ID2_O={id2_}'
-        query = query.format(id1_=player2, id2_=player1)
-        data = cursor.execute(query).fetchall()
-        reversed = True
+    # if len(data) == 0:
+    query = 'select * from odds_atp where ID1_O={id1_} AND ID2_O={id2_}'
+    query = query.format(id1_=player2, id2_=player1)
+    data2 = cursor.execute(query).fetchall()
+    # reversed = True
     k1 = []
     k2 = []
     for line in data:
         if line[5] is not None and line[6] is not None:
             k1.append(float(line[5]))
             k2.append(float(line[6]))
+    for line in data2:
+        if line[5] is not None and line[6] is not None:
+            k1.append(float(line[6]))
+            k2.append(float(line[5]))
     coef = (float(np.mean(k1)), float(np.mean(k2)))
-    if reversed:
-        coef = coef[::-1]
+    # if reversed:
+    #     coef = coef[::-1]
     if np.isnan(coef[0]) or np.isnan(coef[1]):
         return (json.dumps
                ({'type': 'piechart',

@@ -8,7 +8,7 @@ import sqlite3
 app = Flask(__name__)
 con = sqlite3.connect('../data/on_court.db')
 cursor = con.cursor()
-cursor.execute("SELECT * FROM sqlite_master")
+# cursor.execute("SELECT * FROM sqlite_master")
 
 
 @app.route('/')
