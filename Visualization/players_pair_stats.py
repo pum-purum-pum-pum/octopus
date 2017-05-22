@@ -41,9 +41,9 @@ def players_pair_stats(cursor, id1, id2, id_t=None, features_dict=None):
     query4 = query4.format(id1_=id1, id2_ = id2)
     games_history = cursor.execute(query4).fetchall()
 
-    legend_data1 = {"axis": ["Player ID", "Rating", "Rank", "Recent games results1", "Recent games results2", "Recent games results3", "Recent games results4", "Recent games results5", "Games count", "Winrate", "Days after last game"], "Title": "Individual features"}
-    legend_data2 = {"axis": ["player ID", "Rating difference", "Rank difference", "Games amount difference", "Winrate Difference", "Days after last game difference", "Meetings count", "Pair winrate", "Recent meeting results1", "Recent meeting results2", "Recent meeting results3", "Recent meeting results4", "Recent meeting results5", "Indirect score"], "Title": "Players pair features"}
-    legend_data3 = {"axis": ["1st player ID", "2nd player ID", "Tournament ID", "Round ID", "Game result", "Date"], "Title": "Recent games history"}
+    legend_data1 = {"axis": ["Player ID", "Rating", "Rank", "Recent games results1", "Recent games results2", "Recent games results3", "Recent games results4", "Recent games results5", "Games count", "Winrate", "Days after last game"], "title": "Individual features"}
+    legend_data2 = {"axis": ["player ID", "Rating difference", "Rank difference", "Games amount difference", "Winrate Difference", "Days after last game difference", "Meetings count", "Pair winrate", "Recent meeting results1", "Recent meeting results2", "Recent meeting results3", "Recent meeting results4", "Recent meeting results5", "Indirect score"], "title": "Players pair features"}
+    legend_data3 = {"axis": ["1st player ID", "2nd player ID", "Tournament ID", "Round ID", "Game result", "Date"], "title": "Recent games history"}
 
     return [{"type": "side_to_side", "data": [features1, features2], "legend": legend_data1},
                 {"type": "table", "data": pair_features, "legend": legend_data2},
