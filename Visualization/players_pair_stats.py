@@ -50,7 +50,7 @@ def players_pair_stats(cursor, id1, id2, id_t=None, features_dict=None):
                 {"type": "history", "data": games_history, "legend": legend_data3}]
 
 if __name__ == "__main__":
-    with sqlite3.connect('../data/on_court.db') as con:
+    with sqlite3.connect(os.path.dirname(os.path.realpath(__file__)) + '/../data/on_court.db') as con:
         cursor = con.cursor()
     print(json.dumps(players_pair_stats(cursor, args.id1, args.id2)))
 
