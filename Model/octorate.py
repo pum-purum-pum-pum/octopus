@@ -1,6 +1,6 @@
 import numpy as np
 from trueskill import Rating, rate_1vs1
-import progressbar
+# import progressbar
 from trueskill.backends import cdf
 from math import sqrt
 from trueskill import BETA
@@ -27,7 +27,7 @@ if __name__ == "__main__":
     query = query.format(id1_=1, win_=1, court_=1)
     games = np.array(cursor.execute(query).fetchall())
     max_id = max(games[:, 0].max(), games[:, 1].max()) + 1
-    bar = progressbar.ProgressBar(max_value=len(games))
+    # bar = progressbar.ProgressBar(max_value=len(games))
     ratings = [Rating() for i in range(max_id)]
     for ii, i in enumerate(games):
         bar.update(ii)

@@ -62,8 +62,8 @@ def strength_triangle(id_1, id_2, tournament=None, other = None):
     octorate_max = np.max(octorate_data['mu'].values)
     octorate_min = np.min(octorate_data['mu'].values)
 
-    octorate_v1 = octorate_data[octorate_data['ID']==id_1]['mu'].values[0]
-    octorate_v2 = octorate_data[octorate_data['ID']==id_2]['mu'].values[0]
+    octorate_v1 = round(octorate_data[octorate_data['ID']==id_1]['mu'].values[0],3)
+    octorate_v2 = round(octorate_data[octorate_data['ID']==id_2]['mu'].values[0],3)
 
     octorate_v1_normed = normed_octo(octorate_v1,octorate_max,octorate_min)
     octorate_v2_normed = normed_octo(octorate_v2,octorate_max,octorate_min)
@@ -75,8 +75,10 @@ def strength_triangle(id_1, id_2, tournament=None, other = None):
                                             normed_2(prize_p2,prize_norm),
                                             wr_p2,octorate_v2_normed] ]
 
-    visualization_data_original = [ [rank_p1, point_p1, prize_p1, wr_p1, octorate_v1],
-                                    [rank_p2, point_p2, prize_p2, wr_p2, octorate_v2] ]
+    visualization_data_original = [ [int(rank_p1), int(point_p1),
+                                    int(prize_p1), round(wr_p1,3), octorate_v1],
+                                    [int(rank_p2), int(point_p2),
+                                    int(prize_p2), round(wr_p2,3), octorate_v2] ]
 
     visualization_legend = {'axis': ['Rank', 'Points', 'Prize', 'Win Rate', 'Octo Rate'], 'title': 'Strength polygon'}
 
@@ -84,8 +86,7 @@ def strength_triangle(id_1, id_2, tournament=None, other = None):
                         data = visualization_data_normed,
                         legend = visualization_legend)
 
-    r_original = dict(  type = visualization_type,
-                        data = visualization_data_original,
+    r_original = dict(  data = visualization_data_original,
                         legend = visualization_legend)
     return [r_normed,r_original]
 
