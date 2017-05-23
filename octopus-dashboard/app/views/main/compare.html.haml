@@ -1,0 +1,21 @@
+-# %head{style:'background: image-url("assets/octopus.jpg") no-repeat'}
+.bg-image.select
+
+%div{style: 'width: 50%; margin: 0 auto;'}
+  .col-sm-3
+  .col-sm-9
+
+  .panel.panel-default
+    .panel-heading
+      %h1.panel-title Select Players ids
+    .panel-body
+      = bootstrap_form_tag url: '/players/compare', method: 'get', layout: :horizontal do |f|
+        - if notice
+          %p.notice= notice
+        = f.form_group control_col: 'col-sm-10', label_col: 'col-sm-1' do
+          = f.text_field :first_id
+          = f.text_field :second_id
+
+        = f.form_group label_col: 'col-sm-3' do
+          = f.submit 'Predict!'
+

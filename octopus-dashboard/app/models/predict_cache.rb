@@ -1,0 +1,2 @@
+class PredictCache < ApplicationRecord
+end

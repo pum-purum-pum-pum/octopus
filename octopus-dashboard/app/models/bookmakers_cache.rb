@@ -1,0 +1,2 @@
+class BookmakersCache < ApplicationRecord
+end

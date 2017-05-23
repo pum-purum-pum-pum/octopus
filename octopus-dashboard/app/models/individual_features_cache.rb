@@ -1,0 +1,2 @@
+class IndividualFeaturesCache < ApplicationRecord
+end

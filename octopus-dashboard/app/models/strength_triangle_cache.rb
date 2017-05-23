@@ -1,0 +1,2 @@
+class StrengthTriangleCache < ApplicationRecord
+end

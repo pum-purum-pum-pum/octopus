@@ -1,0 +1,90 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "flag-icon";
+
+.text {
+  font-weight: bold
+}
+
+.bg-image{
+  position: fixed;
+  background-image: url('octopus.jpg');
+  background-repeat: no-repeat;
+  width:100%;
+  height:1700px;
+  z-index: -1;
+}
+
+.bg-image.select {
+  margin:-600px -100px;
+  opacity:0.3;
+}
+
+.bg-image.compare{
+  // position: absolute;
+  margin:-500px -100px;
+  height:1400px;
+  opacity:0.15;
+}
+
+.bg-image.listing{
+  // position: absolute;
+  opacity:0.05;
+  margin:-600px -100px;
+}
+
+.bg-image.coming{
+  margin:-600px -100px;
+  opacity:0.08;
+}
+
+.panel {
+  background: none;
+}
+
+.panel-body{
+  background-color: rgba(245, 245, 245, 0.8);
+}
+
+.first_player{
+  color: hsla(1, 57%, 35%, 1);
+}
+
+.second_player{
+  color: hsla(215, 57%, 36%, 1);
+}
+
+.nav.navbar-nav li a {
+   color: black;
+   font-weight: bold;
+ }
+
+.nav.navbar-nav li:hover a:hover {
+  color: #863c2d;
+  font-weight: bold
+}
+
+a.navbar-brand {
+   color: black !important;
+   font-weight: bold;
+ }
+
+a.navbar-brand:hover {
+    color: #863c2d !important;
+    font-weight: bold;
+  }
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */

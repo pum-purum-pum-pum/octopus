@@ -1,0 +1,45 @@
+-#= javascript_include_tag 'https://cdn.plot.ly/plotly-latest.min.js'
+-#= javascript_include_tag 'https://d3js.org/d3.v4.min.js'
+
+:javascript
+  document.documentElement.style.overflowX = 'hidden';
+
+.bg-image.compare
+
+%div.page-header
+  %h1
+    %span.first_player
+      = "#{@first.name} (#{@first.country}"
+
+      %span.flag-icon{class: 'flag-icon-' + convert_country_code(@first.country)}><
+      )
+    %small vs
+    %span.second_player
+      = "#{@second.name} (#{@second.country}"
+      %span.flag-icon{class: 'flag-icon-' + convert_country_code(@second.country)}><
+      )
+
+%h3
+  - if @infographics[:prediction] >= 0.5
+    %span.first_player
+      = "#{@first.name}"
+    wins with #{@infographics[:prediction].round(2)} probability
+  - else
+    %span.second_player
+      = "#{@second.name}"
+    wins with #{(1 - @infographics[:prediction]).round(2)} probability
+
+
+.row
+  .col-sm-12
+    .row
+      .col-sm-6
+        = render partial: 'prediction', locals: {id: 'prediction', prediction: @infographics[:prediction]}
+      .col-sm-6
+        = render partial: 'side_to_side', locals: {id: 'individual_features', data: @infographics[:individual_features]}
+
+    .row
+      .col-sm-6
+        = render partial: 'forcechart', locals: {id: 'forcechart', data: @infographics[:strength_polygon][0]}
+      .col-sm-6
+        = render partial: 'table', locals: {id: 'table', data: @infographics[:strength_polygon][1]}

@@ -1,0 +1,11 @@
+.panel.panel-default
+  .panel-heading
+    .panel-title Win rates
+  .panel-body
+    %canvas{id: id, width: '500', height: '400'}
+
+
+:javascript
+  $(window).ready(() =>
+    drawSideToSideChart(
+      '#{id}', #{data.to_json}, ['#{@first.name} (#{@first.country})', '#{@second.name} (#{@second.country})']))

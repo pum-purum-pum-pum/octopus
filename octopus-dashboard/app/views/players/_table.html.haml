@@ -1,0 +1,17 @@
+.panel.panel-default
+  .panel-heading
+    .panel-title Comparative statistics
+  .panel-body
+    %table.table
+      %thead
+        %tr
+          %th
+          %th= "#{@first.name} (#{@first.country})"
+          %th= "#{@second.name} (#{@second.country})"
+
+      %tbody
+        - data['legend']['axis'].each_with_index do |text, index|
+          %tr
+            %td= text
+            %td= data['data'][0][index]
+            %td= data['data'][1][index]

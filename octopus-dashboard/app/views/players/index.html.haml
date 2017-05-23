@@ -1,0 +1,35 @@
+%h1 Listing players
+.bg-image.listing
+
+= bootstrap_form_tag url: players_path, method: 'get', layout: :inline do |f|
+  = f.text_field :search, value: params[:search], hide_label: true
+  = f.submit 'Search '
+
+= will_paginate
+
+%table.table
+  %thead
+    %tr
+      %th Id
+      %th Name
+      %th Country
+      %th Rank
+      %th Prize
+      %th Birthdate
+
+  %tbody
+    - @players.each do |player|
+      %tr
+        %td= player.oncourt_id
+        %td{style:'font-weight: bold;'}= player.name
+        %td
+          = player.country
+          - if player.country
+            %span.flag-icon{class: 'flag-icon-' + convert_country_code(player.country)}
+        %td= player.rank
+        %td
+          %p
+            = number_with_delimiter(player.prize, :delimiter => ' ')
+        %td= player.birthdate
+
+= will_paginate

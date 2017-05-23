@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", 'http-equiv' => 'Content-Type'}/
+    %title Octopus
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+
+    %nav.navbar.navbar-default
+      .container
+        .navbar-header
+          %button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+        %a.navbar-brand(href='/') Octopus
+        .navbar-collapse.collapse.navbar-responsive-collapse
+          %ul.nav.navbar-nav.pull-right
+            %li= link_to 'Players', players_path
+            %li= link_to 'Compare', '/compare'
+            %li= link_to 'Coming', '/coming'
+
+    .container
+      = yield
