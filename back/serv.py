@@ -2,6 +2,8 @@ from flask import Flask
 from flask import request
 from Visualization.bookmakers import get_bookmakers_coef
 from Visualization.individual_features import win_rate
+from Model.octorate import win_prob
+
 import pandas as pd
 import numpy as np
 import sqlite3
@@ -28,3 +30,10 @@ def get_win_rate():
     player1 = request.args.get('player1')
     player2 = request.args.get('player2')
     return win_rate(cursor, player1, player2)
+
+
+@app.route('/prob', methods=['GET'])
+def get_win_prob():
+    player1 = request.args.get('player1')
+    player2 = request.args.get('player2')
+    return win_prob(cursor, player1, player2)
