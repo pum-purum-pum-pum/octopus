@@ -15,7 +15,6 @@ def win_probability_by_rate(player_rating, opponent_rating):
 
 
 def win_prob(cursor, pid1, pid2):
-    print ('select * from octorate where ID={id_}'.format(id_=pid1))
     p1 = cursor.execute('select * from octorate where ID={id_}'.format(id_=pid1)).fetchall()[0]
     p2 = cursor.execute('select * from octorate where ID={id_}'.format(id_=pid2)).fetchall()[0]
     return str(win_probability_by_rate(Rating(mu=p1[1], sigma=p1[2]), Rating(mu=p2[1], sigma=p2[2])))
