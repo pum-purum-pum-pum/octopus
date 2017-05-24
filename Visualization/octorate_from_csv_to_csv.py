@@ -35,5 +35,5 @@ if __name__ == "__main__":
         data_ar_to_csv.append([ii, i.mu, i.sigma])
     npar_data = np.array(data_ar_to_csv)
     csv_to_save = pd.DataFrame(data=npar_data, columns=['ID', 'mu', 'sigma'])
-    csv_to_save.to_csv('octorate.csv')
+    csv_to_save.to_csv('octorate.csv', index=False)
     print ('complete')
